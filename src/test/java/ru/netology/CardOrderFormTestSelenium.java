@@ -39,7 +39,7 @@ public class CardOrderFormTestSelenium {
     @Test
     void shouldSubmitRequestIfFieldsAreFilledCorrect() {
         driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Василий Васин");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Василий Васин");
         driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79990000000");
         driver.findElement(By.cssSelector("[class='checkbox__text']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
@@ -56,7 +56,7 @@ public class CardOrderFormTestSelenium {
         driver.findElement(By.cssSelector("[class='checkbox__text']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
-        String actualMassage = driver.findElement(By.cssSelector(".input_type_text .input__sub")).getText();
+        String actualMassage = driver.findElement(By.cssSelector("[data-test-id=name] .input__sub")).getText();
         assertEquals("Поле обязательно для заполнения", actualMassage.trim());
     }
 
