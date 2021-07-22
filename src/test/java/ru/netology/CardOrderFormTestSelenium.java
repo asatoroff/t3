@@ -27,6 +27,7 @@ public class CardOrderFormTestSelenium {
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -38,10 +39,9 @@ public class CardOrderFormTestSelenium {
 
     @Test
     void shouldSubmitRequestIfFieldsAreFilledCorrect() {
-        driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Василий Васин");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79990000000");
-        driver.findElement(By.cssSelector("[class='checkbox__text']")).click();
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Василий Васин");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79990000000");
+        driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
         String actualMassage = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
@@ -50,10 +50,9 @@ public class CardOrderFormTestSelenium {
 
     @Test
     void shouldNotSubmitRequestIfTextFieldIsEmpty() {
-        driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[type='text']")).sendKeys("");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79990000000");
-        driver.findElement(By.cssSelector("[class='checkbox__text']")).click();
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79990000000");
+        driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
         String actualMassage = driver.findElement(By.cssSelector("[data-test-id=name] .input__sub")).getText();
@@ -63,9 +62,9 @@ public class CardOrderFormTestSelenium {
     @Test
     void shouldNotSubmitRequestIfTextFieldIsInvalid() {
         driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[type='text']")).sendKeys("jdhfh");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79990000000");
-        driver.findElement(By.cssSelector("[class='checkbox__text']")).click();
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("jdhfh");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79990000000");
+        driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
         String actualMassage = driver.findElement(By.cssSelector(".input_type_text .input__sub")).getText();
@@ -74,10 +73,9 @@ public class CardOrderFormTestSelenium {
 
     @Test
     void shouldNotSubmitRequestIfTelFieldIsEmpty() {
-        driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Василий Васин");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("");
-        driver.findElement(By.cssSelector("[class='checkbox__text']")).click();
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Василий Васин");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("");
+        driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
         String actualMassage = driver.findElement(By.cssSelector(".input_invalid .input__sub")).getText();
@@ -86,10 +84,9 @@ public class CardOrderFormTestSelenium {
 
     @Test
     void shouldNotSubmitRequestIfTelFieldIsInvalid() {
-        driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Василий Васин");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("9374573");
-        driver.findElement(By.cssSelector("[class='checkbox__text']")).click();
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Василий Васин");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("9374573");
+        driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
         String actualMassage = driver.findElement(By.cssSelector(".input_invalid .input__sub")).getText();
@@ -98,10 +95,9 @@ public class CardOrderFormTestSelenium {
 
     @Test
     void shouldNotSubmitRequestIfCheckboxNotClick() {
-        driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Василий Васин");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79990000000");
-        driver.findElement(By.cssSelector("[class='checkbox__text']"));
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Василий Васин");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79990000000");
+        driver.findElement(By.cssSelector("[class='checkbox__box']"));
         driver.findElement(By.cssSelector("[type='button']")).click();
 
         String actualMassage = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid .checkbox__text")).getText();
