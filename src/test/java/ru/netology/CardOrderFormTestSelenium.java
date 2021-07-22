@@ -103,6 +103,7 @@ public class CardOrderFormTestSelenium {
         String actualMassage = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid .checkbox__text")).getText();
         String expectedMessage = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
         assertEquals(expectedMessage, actualMassage.trim());
+
     }
 
 }
