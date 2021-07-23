@@ -67,7 +67,7 @@ public class CardOrderFormTestSelenium {
         driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
-        String actualMassage = driver.findElement(By.cssSelector(".input_type_text .input__sub")).getText();
+        String actualMassage = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText();
         assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", actualMassage.trim());
     }
 
@@ -78,7 +78,7 @@ public class CardOrderFormTestSelenium {
         driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
-        String actualMassage = driver.findElement(By.cssSelector(".input_invalid .input__sub")).getText();
+        String actualMassage = driver.findElement(By.cssSelector("[data-test-id=\"phone\"].input_invalid .input__sub")).getText();
         assertEquals("Поле обязательно для заполнения", actualMassage.trim());
     }
 
@@ -89,7 +89,7 @@ public class CardOrderFormTestSelenium {
         driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("[type='button']")).click();
 
-        String actualMassage = driver.findElement(By.cssSelector(".input_invalid .input__sub")).getText();
+        String actualMassage = driver.findElement(By.cssSelector("[data-test-id=\"phone\"].input_invalid .input__sub")).getText();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", actualMassage.trim());
     }
 
